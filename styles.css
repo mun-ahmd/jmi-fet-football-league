@@ -1,0 +1,101 @@
+
+/* Styles for the whole body */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+section {
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 10px;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+}
+
+table {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    display: block;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+/* Highlight the table header */
+table thead {
+    background-color: #333;
+    color: white;
+}
+
+table tr {
+    table-layout: fixed;
+    background-color: #333;
+    color: white;
+}
+
+/* Highlight the first two rows (teams that qualify for the final) */
+//table tbody tr:nth-child(1),
+//table tbody tr:nth-child(2) {
+//}
+
+table tbody tr:nth-child(2) {
+    border-bottom: 3px solid red;
+}
+
+ul {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+ul li {
+    padding: 8px;
+    background-color: #e0e0e0;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+ul li span {
+    font-weight: bold;
+}
+
+ul li.past {
+    background-color: #d4edda; /* Light green for past matches */
+}
+
+ul li.upcoming {
+    background-color: #f8d7da; /* Light red for upcoming matches */
+}
+
+ul li.final {
+    background-color: #FDDC5C; /* Light golden for the final */
+}

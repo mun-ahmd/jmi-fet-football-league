@@ -1,0 +1,252 @@
+
+const participants = {
+    'CS': 'Computer Engineering',
+    'EC': 'Electronics & Communications Engineering',
+    'EE': 'Electrical Engineering',
+    'CE': 'Civil Engineering',
+    'ME': 'Mechanical Engineering',
+    'AS': 'Applied Sciences - Environmental - Aeronautics'
+}
+
+const FINAL_DAY = 6;
+
+const fixtures = [
+    { day: 1, home: 'ME', away: 'CE', result: '5-0', time: '13:00' },  
+    { day: 1, home: 'EC', away: 'EE', result: '3-1', time: '14:30' },  
+    { day: 1, home: 'CS', away: 'AS', result: '1-0', time: '16:00' },  
+    { day: 2, home: 'CS', away: 'EC', result: '0-0', time: '10:00' },  
+    { day: 2, home: 'ME', away: 'AS', result: '3-0', time: '11:30' },  
+    { day: 2, home: 'CE', away: 'EE', result: '0-2', time: '14:00' },  
+    { day: 3, home: 'EE', away: 'AS', result: null, time: '10:00' },  
+    { day: 3, home: 'CE', away: 'EC', result: null, time: '14:30' },  
+    { day: 3, home: 'CS', away: 'ME', result: null, time: '16:00' },  
+    { day: 4, home: 'CS', away: 'CE', result: null, time: '10:00' },  
+    { day: 4, home: 'EE', away: 'ME', result: null, time: '11:30' },  
+    { day: 4, home: 'AS', away: 'EC', result: null, time: '13:00' },  
+    { day: 5, home: 'EC', away: 'ME', result: null, time: '09:00' },  
+    { day: 5, home: 'CS', away: 'EE', result: null, time: '10:30' },  
+    { day: 5, home: 'AS', away: 'CE', result: null, time: '12:00' },  
+    { day: 6, home: 'TBD', away: 'TBD', result: null, time: '15:00' },  
+]
+
+const fixture_descriptions = {
+    1 : 'Day 1 - 21st September - Saturday',
+    2 : 'Day 2 - 22nd September - Sunday',
+    3 : 'Day 3 - 27th September - Friday',
+    4 : 'Day 4 - 28th September - Saturday',
+    5 : 'Day 5 - 29th September - Sunday',
+    6 : 'Final - 5th October - Friday'
+}
+
+const goals = [
+    { name : 'Ayan', team : 'ME', assist : null },
+    { name : 'Ausab', team : 'ME', assist : 'Osama' },
+    { name : 'Ausab', team : 'ME', assist : 'Momodou' },
+    { name : 'Osama', team : 'ME', assist : 'Momodou' },
+    { name : 'Rehan', team : 'ME', assist : 'Momodou' },
+    { name : 'Asjad', team : 'ME', assist : null },
+    { name : 'Aman', team : 'ME', assist : 'Osama' },
+    { name : 'Saquib', team : 'ME', assist : 'Asjad' },
+    { name : 'Hamza', team : 'CS', assist : 'Ameen' },
+    { name : 'Rehan', team : 'EE', assist : 'Hidayat' },
+    { name : 'Riaz', team : 'EC', assist : 'Zayan' },
+    { name : 'Zayan', team : 'EC', assist : 'Danish' },
+    { name : 'Saad', team : 'EE', assist : 'Rehan' },
+    { name : 'Tathagat', team : 'EE', assist : 'Salman' },
+]
+
+// Function to display league table
+function displayLeagueTable() {
+    const tableBody = document.getElementById('table-body');
+    
+    let teams = []
+    Object.entries(participants).forEach( ([pkey, participant]) => {
+        let team = {
+            position : null,
+            name : participant,
+            played : 0,
+            won : 0,
+            drawn : 0,
+            lost : 0,
+            points : 0,
+            goals_for : 0,
+            goals_against : 0,
+            goal_difference : 0
+        }
+        for (let fixture of fixtures) {
+            if (!fixture.result){
+                continue;
+            }
+
+            let is_home = fixture.home == pkey;
+            let is_away = fixture.away == pkey;
+
+            if(!(is_home || is_away)){
+                continue;
+            }
+
+            team.played += 1;
+            
+            let [home_goals, away_goals] = fixture.result.split('-').map(Number)
+            
+            if (is_home){
+                team.goals_for += home_goals;
+                team.goals_against += away_goals;
+            }
+            else{
+                team.goals_for += away_goals;
+                team.goals_against += home_goals;
+            }
+
+            if(home_goals == away_goals){
+                team.drawn += 1;
+            }
+            else if(
+                (is_home && (home_goals > away_goals)) ||
+                (is_away && (away_goals > home_goals))
+            ){
+                team.won += 1;
+            }
+            else{
+                team.lost += 1;
+            }
+        }
+        team.points = (team.won * 3) + team.drawn;
+        team.goal_difference = team.goals_for - team.goals_against
+        teams.push(team)
+    })
+
+    teams.sort((a,b) => {
+        if (a.points != b.points) {
+            return b.points - a.points;
+        }
+        if (a.goal_difference != b.goal_difference) {
+            return b.goal_difference - a.goal_difference;
+        }
+        return b.goals_for - a.goals_for;
+    })
+
+    teams.forEach((team, position) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${1+position}</td>
+            <td>${team.name}</td>
+            <td>${team.played}</td>
+            <td>${team.won}</td>
+            <td>${team.drawn}</td>
+            <td>${team.lost}</td>
+            <td>${team.points}</td>
+            <td>${team.goal_difference}</td>
+            <td>${team.goals_for}</td>
+            <td>${team.goals_against}</td>
+        `;
+        tableBody.appendChild(row);
+    });
+}
+
+// Function to display top scorers
+function displayTopScorers() {
+    const scorersList = document.getElementById('scorers-list');
+ 
+    let topScorers = new Map();
+    goals.forEach(({name, team, assist}) => {
+        if (name == null){
+            return;
+        }
+
+        let identifier = `${name}-${team}`;
+        if(topScorers.has(identifier)){
+            let scorer = topScorers.get(identifier);
+            scorer.goals += 1;
+            topScorers.set(identifier, scorer);
+        }
+        else{
+            topScorers.set(identifier, {name : name, team : team, goals: 1});
+        }
+    })
+
+    topScorers = Array.from(topScorers.values());
+    topScorers.sort((a,b) => {return b.goals - a.goals;})
+
+    topScorers.forEach(scorer => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `${scorer.name} (${scorer.team}) - <span style="float: right;">${scorer.goals} goals</span>`;
+        scorersList.appendChild(listItem);
+    });
+}
+
+// Function to display top assisters
+function displayTopAssisters() {
+    const assistersList = document.getElementById('assisters-list');
+
+    let topAssisters = new Map();
+    goals.forEach(({name, team, assist}) => {
+        if (assist == null){
+            return;
+        }
+
+        let identifier = `${assist}-${team}`;
+        if(topAssisters.has(identifier)){
+            let assister = topAssisters.get(identifier);
+            assister.assists += 1;
+            topAssisters.set(identifier, assister);
+        }
+        else{
+            topAssisters.set(identifier, {name : assist, team : team, assists: 1});
+        }
+    })
+
+    topAssisters = Array.from(topAssisters.values());
+    topAssisters.sort((a,b) => {return b.assists - a.assists;});
+
+    topAssisters.forEach(assister => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `${assister.name} (${assister.team}) - <span style="float: right;">${assister.assists} assists</span>`;
+        assistersList.appendChild(listItem);
+    });
+}
+
+// Function to group fixtures by day and display them
+function displayFixturesGroupedByDay() {
+    const fixturesGrouped = document.getElementById('fixtures-grouped');
+    let currentDay = 0;
+    
+    fixtures.forEach(fixture => {
+        
+        let date = new Date(`1970-01-01T${fixture.time}:00`);
+        
+        // Check if the date is valid
+        if (!isNaN(date.getTime())) {
+           fixture.time = date.toLocaleString('en-US', { hour: 'numeric', hour12: true }) 
+        }
+
+        if (fixture.day !== currentDay) {
+            // Create a new day header
+            const dayHeader = document.createElement('h3');
+            dayHeader.textContent = `${fixture_descriptions[fixture.day]}`;
+            fixturesGrouped.appendChild(dayHeader);
+            currentDay = fixture.day;
+        }
+
+        // Create the fixture list item
+        const listItem = document.createElement('li');
+
+            listItem.innerHTML = `${fixture.home} vs ${fixture.away} - <span>${fixture.time}</span><span style="float: right;">${fixture.result ?? 'TBD'}</span>`;
+
+        if (fixture.day == FINAL_DAY){
+            listItem.classList.add('final');
+        }
+        else if (fixture.result) {
+            listItem.classList.add('past');
+        } else {
+            listItem.classList.add('upcoming');
+        }
+        fixturesGrouped.appendChild(listItem);
+    });
+}
+
+// Initialize the data display
+displayLeagueTable();
+displayTopScorers();
+displayTopAssisters();
+displayFixturesGroupedByDay();
