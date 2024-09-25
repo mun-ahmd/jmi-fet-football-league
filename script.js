@@ -40,8 +40,8 @@ const fixture_descriptions = {
 
 const goals = [
     { name : 'Ayan', team : 'ME', assist : null },
-    { name : 'Ausab', team : 'ME', assist : 'Osama' },
-    { name : 'Ausab', team : 'ME', assist : 'Momodou' },
+    { name : 'Ansab', team : 'ME', assist : 'Osama' },
+    { name : 'Ansab', team : 'ME', assist : 'Momodou' },
     { name : 'Osama', team : 'ME', assist : 'Momodou' },
     { name : 'Rehan', team : 'ME', assist : 'Momodou' },
     { name : 'Asjad', team : 'ME', assist : null },
