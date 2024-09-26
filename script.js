@@ -55,6 +55,13 @@ const goals = [
     { name : 'Tathagat', team : 'EE', assist : 'Salman' },
 ]
 
+const topCleanSheets = [
+    { name : 'Khushal', team : 'CS', count : 2 },
+    { name : 'Kashif', team : 'ME', count : 2 },
+    { name : 'Jasim', team : 'EC', count : 1 },
+    { name : 'Nauman', team : 'EE', count : 1 }
+]
+
 // Function to display league table
 function displayLeagueTable() {
     const tableBody = document.getElementById('table-body');
@@ -170,7 +177,7 @@ function displayTopScorers() {
 
     topScorers.forEach(scorer => {
         const listItem = document.createElement('li');
-        listItem.innerHTML = `${scorer.name} (${scorer.team}) - <span style="float: right;">${scorer.goals} goals</span>`;
+        listItem.innerHTML = `${scorer.name} (${scorer.team}) <span style="float: right;">${scorer.goals} goals</span>`;
         scorersList.appendChild(listItem);
     });
 }
@@ -201,8 +208,20 @@ function displayTopAssisters() {
 
     topAssisters.forEach(assister => {
         const listItem = document.createElement('li');
-        listItem.innerHTML = `${assister.name} (${assister.team}) - <span style="float: right;">${assister.assists} assists</span>`;
+        listItem.innerHTML = `${assister.name} (${assister.team}) <span style="float: right;">${assister.assists} assists</span>`;
         assistersList.appendChild(listItem);
+    });
+}
+
+function displayTopCleanSheets() {
+    const cleanSheetsList = document.getElementById('clean-sheets-list');
+
+    topCleanSheets.sort((a,b) => {return b.count - a.count;});
+
+    topCleanSheets.forEach(keeper => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `${keeper.name} (${keeper.team}) <span style="float: right;">${keeper.count} clean sheets</span>`;
+        cleanSheetsList.appendChild(listItem);
     });
 }
 
@@ -249,4 +268,5 @@ function displayFixturesGroupedByDay() {
 displayLeagueTable();
 displayTopScorers();
 displayTopAssisters();
+displayTopCleanSheets();
 displayFixturesGroupedByDay();
