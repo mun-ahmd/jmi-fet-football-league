@@ -48,7 +48,7 @@ const goals = [
     { id: 6, name : 'Aman', team : 'ME', assist : 'Osama' },
     { id: 7, name : 'Saquib', team : 'ME', assist : 'Asjad' },
     { id: 8, name : 'Hamza', team : 'CS', assist : 'Ameen' },
-    { id: 1099, name : 'Sarib (OG)', team : 'EC', assist : '', ownGoal: true },
+    { id: 1099, name : 'Sarib (OG)', team : 'EC', assist : null, ownGoal: true },
     { id: 9, name : 'Rehan', team : 'EE', assist : 'Hidayat' },
     { id: 10, name : 'Riaz', team : 'EC', assist : 'Zayan' },
     { id: 11, name : 'Zayan', team : 'EC', assist : 'Danish' },
@@ -59,8 +59,8 @@ const goals = [
     { id: 16, name : 'Zia', team : 'EC', assist : 'Nashar' },
     { id: 17, name : 'Ashaiz', team : 'EC', assist : 'Zia' },
     { id: 18, name : 'Zia', team : 'EC', assist : 'Ashaiz' },
-    { id: 19, name : 'Zia', team : 'EC', assist : '', penalty: true },
-    { id: 20, name : 'Ashaiz', team : 'EC', assist : '' },
+    { id: 19, name : 'Zia', team : 'EC', assist : null, penalty: true },
+    { id: 20, name : 'Ashaiz', team : 'EC', assist : null },
 ]
 
 function getGoalByID(id){
