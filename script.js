@@ -17,7 +17,7 @@ const fixtures = [
     { day: 2, home: 'CS', away: 'EC', result: '0-0', time: '10:00' },  
     { day: 2, home: 'ME', away: 'AS', result: '3-0', time: '11:30' },  
     { day: 2, home: 'CE', away: 'EE', result: '0-2', time: '14:00' },  
-    { day: 3, home: 'EE', away: 'AS', result: null, time: '10:00' },  
+    { day: 3, home: 'EE', away: 'AS', result: '1-1', time: '10:00' },  
     { day: 3, home: 'CE', away: 'EC', result: null, time: '14:30' },  
     { day: 3, home: 'CS', away: 'ME', result: null, time: '16:00' },  
     { day: 4, home: 'CS', away: 'CE', result: null, time: '10:00' },  
@@ -53,6 +53,8 @@ const goals = [
     { name : 'Zayan', team : 'EC', assist : 'Danish' },
     { name : 'Saad', team : 'EE', assist : 'Rehan' },
     { name : 'Tathagat', team : 'EE', assist : 'Salman' },
+    { name : 'Mehbubul', team : 'AS', assist : 'Aatif' },
+    { name : 'Hedayat', team : 'EE', assist : 'Iftikhar' }
 ]
 
 const topCleanSheets = [
