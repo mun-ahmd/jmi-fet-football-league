@@ -11,15 +11,15 @@ const participants = {
 const FINAL_DAY = 6;
 
 const fixtures = [
-    { day: 1, home: 'ME', away: 'CE', result: '5-0', time: '13:00' },  
-    { day: 1, home: 'EC', away: 'EE', result: '3-1', time: '14:30' },  
-    { day: 1, home: 'CS', away: 'AS', result: '1-0', time: '16:00' },  
-    { day: 2, home: 'CS', away: 'EC', result: '0-0', time: '10:00' },  
-    { day: 2, home: 'ME', away: 'AS', result: '3-0', time: '11:30' },  
-    { day: 2, home: 'CE', away: 'EE', result: '0-2', time: '14:00' },  
-    { day: 3, home: 'EE', away: 'AS', result: '1-1', time: '10:00' },  
-    { day: 3, home: 'CE', away: 'EC', result: null, time: '14:30' },  
-    { day: 3, home: 'CS', away: 'ME', result: null, time: '16:00' },  
+    { day: 1, home: 'ME', away: 'CE', result: '5-0', time: '13:00', goals: [0,1,2,3,4] },  
+    { day: 1, home: 'EC', away: 'EE', result: '3-1', time: '14:30', goals: [1099, 9, 10, 11] },  
+    { day: 1, home: 'CS', away: 'AS', result: '1-0', time: '16:00', goals: [8] },  
+    { day: 2, home: 'CS', away: 'EC', result: '0-0', time: '10:00', goals: [] },  
+    { day: 2, home: 'ME', away: 'AS', result: '3-0', time: '11:30', goals: [5, 6, 7] },  
+    { day: 2, home: 'CE', away: 'EE', result: '0-2', time: '14:00', goals: [12, 13] },  
+    { day: 3, home: 'EE', away: 'AS', result: '1-1', time: '10:00', goals: [14, 15] },  
+    { day: 3, home: 'CE', away: 'EC', result: '0-5', time: '14:30', goals: [16, 17, 18, 19, 20] },  
+    { day: 3, home: 'CS', away: 'ME', result: '0-0', time: '16:00', goals: [] },  
     { day: 4, home: 'CS', away: 'CE', result: null, time: '10:00' },  
     { day: 4, home: 'EE', away: 'ME', result: null, time: '11:30' },  
     { day: 4, home: 'AS', away: 'EC', result: null, time: '13:00' },  
@@ -39,28 +39,44 @@ const fixture_descriptions = {
 }
 
 const goals = [
-    { name : 'Ayan', team : 'ME', assist : null },
-    { name : 'Ansab', team : 'ME', assist : 'Osama' },
-    { name : 'Ansab', team : 'ME', assist : 'Momodou' },
-    { name : 'Osama', team : 'ME', assist : 'Momodou' },
-    { name : 'Rehan', team : 'ME', assist : 'Momodou' },
-    { name : 'Asjad', team : 'ME', assist : null },
-    { name : 'Aman', team : 'ME', assist : 'Osama' },
-    { name : 'Saquib', team : 'ME', assist : 'Asjad' },
-    { name : 'Hamza', team : 'CS', assist : 'Ameen' },
-    { name : 'Rehan', team : 'EE', assist : 'Hidayat' },
-    { name : 'Riaz', team : 'EC', assist : 'Zayan' },
-    { name : 'Zayan', team : 'EC', assist : 'Danish' },
-    { name : 'Saad', team : 'EE', assist : 'Rehan' },
-    { name : 'Tathagat', team : 'EE', assist : 'Salman' },
-    { name : 'Mehbubul', team : 'AS', assist : 'Aatif' },
-    { name : 'Hedayat', team : 'EE', assist : 'Iftikhar' }
+    { id: 0, name : 'Ayan', team : 'ME', assist : null },
+    { id: 1, name : 'Ansab', team : 'ME', assist : 'Osama' },
+    { id: 2, name : 'Ansab', team : 'ME', assist : 'Momodou' },
+    { id: 3, name : 'Osama', team : 'ME', assist : 'Momodou' },
+    { id: 4, name : 'Rehan', team : 'ME', assist : 'Momodou' },
+    { id: 5, name : 'Asjad', team : 'ME', assist : null, penalty: true },
+    { id: 6, name : 'Aman', team : 'ME', assist : 'Osama' },
+    { id: 7, name : 'Saquib', team : 'ME', assist : 'Asjad' },
+    { id: 8, name : 'Hamza', team : 'CS', assist : 'Ameen' },
+    { id: 1099, name : 'Sarib (OG)', team : 'EC', assist : '', ownGoal: true },
+    { id: 9, name : 'Rehan', team : 'EE', assist : 'Hidayat' },
+    { id: 10, name : 'Riaz', team : 'EC', assist : 'Zayan' },
+    { id: 11, name : 'Zayan', team : 'EC', assist : 'Danish' },
+    { id: 12, name : 'Saad', team : 'EE', assist : 'Rehan' },
+    { id: 13, name : 'Tathagat', team : 'EE', assist : 'Salman' },
+    { id: 14, name : 'Mehbubul', team : 'AS', assist : 'Aatif' },
+    { id: 15, name : 'Hedayat', team : 'EE', assist : 'Iftikhar' },
+    { id: 16, name : 'Zia', team : 'EC', assist : 'Nashar' },
+    { id: 17, name : 'Ashaiz', team : 'EC', assist : 'Zia' },
+    { id: 18, name : 'Zia', team : 'EC', assist : 'Ashaiz' },
+    { id: 19, name : 'Zia', team : 'EC', assist : '', penalty: true },
+    { id: 20, name : 'Ashaiz', team : 'EC', assist : '' },
 ]
 
+function getGoalByID(id){
+    for (let goal of goals){
+        if(goal.id == id){
+            return goal;
+        }
+    }
+    console.log(`No goal with id ${id} found!`);
+    return null;
+}
+
 const topCleanSheets = [
-    { name : 'Khushal', team : 'CS', count : 2 },
-    { name : 'Kashif', team : 'ME', count : 2 },
-    { name : 'Jasim', team : 'EC', count : 1 },
+    { name : 'Khushal', team : 'CS', count : 3 },
+    { name : 'Kashif', team : 'ME', count : 3 },
+    { name : 'Jasim', team : 'EC', count : 2 },
     { name : 'Nauman', team : 'EE', count : 1 }
 ]
 
@@ -158,8 +174,8 @@ function displayTopScorers() {
     const scorersList = document.getElementById('scorers-list');
  
     let topScorers = new Map();
-    goals.forEach(({name, team, assist}) => {
-        if (name == null){
+    goals.forEach(({name, team, assist, ownGoal}) => {
+        if (name == null || ownGoal != null){
             return;
         }
 
@@ -259,6 +275,33 @@ function displayFixturesGroupedByDay() {
         }
         else if (fixture.result) {
             listItem.classList.add('past');
+            // Add goalscorers if available
+            if (fixture.goals.length > 0) {
+                const scorersList = document.createElement('ul');
+                scorersList.classList.add('goalscorers-list');
+                
+                fixture.goals.forEach(goalID => {
+                    let scorer = getGoalByID(goalID)
+                    const scorerItem = document.createElement('li');
+                    scorerItem.innerHTML = `${scorer.name}`;
+                    if (scorer.assist){
+                        scorerItem.innerHTML = scorerItem.innerHTML.concat(
+                            `<span class="assist">${scorer.assist}</span>`
+                        );
+                    }
+                    else if (scorer.penalty){
+                        scorerItem.innerHTML = scorerItem.innerHTML.concat(
+                            `<span class="assist">Penalty</span>`
+                        );
+                    }
+                    scorerItem.innerHTML = scorerItem.innerHTML.concat(
+                        `<span class="scorer-team">${scorer.team}</span>`
+                    );
+                    scorersList.appendChild(scorerItem);
+                });
+
+                listItem.appendChild(scorersList);
+            }
         } else {
             listItem.classList.add('upcoming');
         }

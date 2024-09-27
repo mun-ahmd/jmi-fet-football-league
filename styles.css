@@ -99,3 +99,54 @@ ul li.upcoming {
 ul li.final {
     background-color: #FDDC5C; /* Light golden for the final */
 }
+
+
+/* Styling for the goalscorers list */
+.goalscorers-list {
+    list-style-type: none;  /* Remove default list bullets */
+    padding: 0;             /* Remove default padding */
+    margin: 10px 0 0 0;     /* Add some margin above the list */
+    font-size: 0.9em;       /* Slightly smaller font size */
+}
+
+.goalscorers-list li {
+    padding: 5px 0;         /* Add some padding between list items */
+    color: #333;            /* Set text color */
+}
+
+/* Optional: differentiate the goalscorers */
+.goalscorers-list li:nth-child(odd) {
+    background-color: #f9f9f9;  /* Light background for odd rows */
+}
+
+.goalscorers-list li:nth-child(even) {
+    background-color: #e9ecef;  /* Slightly darker background for even rows */
+}
+
+/* Optional: add left padding to the goalscorers list */
+.goalscorers-list li::before {
+    content: "⚽";            /* Add a small football icon */
+    margin-right: 5px;        /* Space between the icon and text */
+    color: #007bff;           /* Color of the icon */
+}
+
+/* Styling for assist information */
+.assist {
+    color: #555;              /* Grey color for the assister */
+    font-style: italic;       /* Italicize the assister's name */
+    font-size: 0.85em;        /* Slightly smaller than the scorer's font */
+    margin-left: 10px;        /* Space between the scorer's name and the assister's name */
+}
+
+/* Optional: Assister's icon */
+.assist::before {
+    content: "🎯";            /* Small target icon for assist */
+    margin-right: 5px;
+    color: #28a745;           /* Green color for the assist icon */
+}
+
+.scorer-team {
+    color: #999;
+    float: right;
+    padding-right: 5px;
+}
