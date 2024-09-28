@@ -265,7 +265,7 @@ function displayFixturesGroupedByDay() {
         
         // Check if the date is valid
         if (!isNaN(date.getTime())) {
-           fixture.time = date.toLocaleString('en-US', { hour: 'numeric', hour12: true }) 
+           fixture.time = date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }) 
         }
 
         if (fixture.day !== currentDay) {
