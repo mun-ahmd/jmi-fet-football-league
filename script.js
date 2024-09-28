@@ -74,10 +74,12 @@ function getGoalByID(id){
 }
 
 const topCleanSheets = [
-    { name : 'Khushal', team : 'CS', count : 3 },
-    { name : 'Kashif', team : 'ME', count : 3 },
-    { name : 'Jasim', team : 'EC', count : 2 },
-    { name : 'Nauman', team : 'EE', count : 1 }
+    { name : 'Khushal', team : 'CS', count : 4 },
+    { name : 'Kashif', team : 'ME', count : 4 },
+    { name : 'Jasim', team : 'EC', count : 3 },
+    { name : 'Nauman', team : 'EE', count : 2 },
+    { name : 'Suhaib', team : 'CS', count : 1 },
+    { name : 'Vasudev', team : 'CS', count : 1 }
 ]
 
 // Function to display league table
