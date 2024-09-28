@@ -266,6 +266,10 @@ function displayFixturesGroupedByDay() {
         // Check if the date is valid
         if (!isNaN(date.getTime())) {
            fixture.time = date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }) 
+            if (fixture.time.length < 8){
+                //add leading 0
+                fixture.time = '0'.concat(fixture.time);
+            }
         }
 
         if (fixture.day !== currentDay) {
