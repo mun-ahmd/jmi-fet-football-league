@@ -20,9 +20,9 @@ const fixtures = [
     { day: 3, home: 'EE', away: 'AS', result: '1-1', time: '10:00', goals: [14, 15] },  
     { day: 3, home: 'CE', away: 'EC', result: '0-5', time: '14:30', goals: [16, 17, 18, 19, 20] },  
     { day: 3, home: 'CS', away: 'ME', result: '0-0', time: '16:00', goals: [] },  
-    { day: 4, home: 'CS', away: 'CE', result: '4-0', time: '10:00', goals: [] },  
+    { day: 4, home: 'CS', away: 'CE', result: '4-0', time: '10:00', goals: [21, 22, 23, 24] },  
     { day: 4, home: 'EE', away: 'ME', result: '0-0', time: '11:30', goals: [] },  
-    { day: 4, home: 'AS', away: 'EC', result: '0-5', time: '13:00', goals: [] },  
+    { day: 4, home: 'AS', away: 'EC', result: '0-5', time: '13:00', goals: [25, 26, 27, 28, 29] },  
     { day: 5, home: 'EC', away: 'ME', result: null, time: '09:00' },  
     { day: 5, home: 'CS', away: 'EE', result: null, time: '10:30' },  
     { day: 5, home: 'AS', away: 'CE', result: null, time: '12:00' },  
@@ -35,7 +35,7 @@ const fixture_descriptions = {
     3 : 'Day 3 - 27th September - Friday',
     4 : 'Day 4 - 28th September - Saturday',
     5 : 'Day 5 - 29th September - Sunday',
-    6 : 'Final - 5th October - Friday'
+    6 : 'Final - 4th October - Friday'
 }
 
 const goals = [
@@ -48,7 +48,7 @@ const goals = [
     { id: 6, name : 'Aman', team : 'ME', assist : 'Osama' },
     { id: 7, name : 'Saquib', team : 'ME', assist : 'Asjad' },
     { id: 8, name : 'Hamza', team : 'CS', assist : 'Ameen' },
-    { id: 1099, name : 'Sarib (OG)', team : 'EC', assist : null, ownGoal: true },
+    { id: 1099, name : 'Ragib (OG)', team : 'EC', assist : null, ownGoal: true },
     { id: 9, name : 'Rehan', team : 'EE', assist : 'Hidayat' },
     { id: 10, name : 'Riaz', team : 'EC', assist : 'Zayan' },
     { id: 11, name : 'Zayan', team : 'EC', assist : 'Danish' },
@@ -61,6 +61,15 @@ const goals = [
     { id: 18, name : 'Zia', team : 'EC', assist : 'Ashaiz' },
     { id: 19, name : 'Zia', team : 'EC', assist : null, penalty: true },
     { id: 20, name : 'Ashaiz', team : 'EC', assist : null },
+    { id: 21, name : 'Hammad', team : 'CS', assist : 'Khushal' },
+    { id: 22, name : 'Abdullah Ammar', team : 'CS', assist : null },
+    { id: 23, name : 'Hammad', team : 'CS', assist : 'Khushal' },
+    { id: 24, name : 'Khushal', team : 'CS', assist : 'Abdullah Ammar' },
+    { id: 25, name : 'Ashaiz', team : 'EC', assist : 'Nashar' },
+    { id: 26, name : 'Zayan', team : 'EC', assist : 'Zia' },
+    { id: 27, name : 'Ashaiz', team : 'EC', assist : 'Zia' },
+    { id: 28, name : 'Ashaiz', team : 'EC', assist : null, penalty: true },
+    { id: 29, name : 'Zia', team : 'EC', assist : 'Imdadul' },
 ]
 
 function getGoalByID(id){
