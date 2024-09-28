@@ -22,7 +22,7 @@ const fixtures = [
     { day: 3, home: 'CS', away: 'ME', result: '0-0', time: '16:00', goals: [] },  
     { day: 4, home: 'CS', away: 'CE', result: '4-0', time: '10:00', goals: [] },  
     { day: 4, home: 'EE', away: 'ME', result: '0-0', time: '11:30', goals: [] },  
-    { day: 4, home: 'AS', away: 'EC', result: '0-1', time: '13:00', goals: [] },  
+    { day: 4, home: 'AS', away: 'EC', result: '0-5', time: '13:00', goals: [] },  
     { day: 5, home: 'EC', away: 'ME', result: null, time: '09:00' },  
     { day: 5, home: 'CS', away: 'EE', result: null, time: '10:30' },  
     { day: 5, home: 'AS', away: 'CE', result: null, time: '12:00' },  
