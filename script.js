@@ -75,7 +75,7 @@ const goals = [
   { id: 32, name: 'Rehan', team: 'EE', assist: 'Iftikhar' },
   { id: 33, name: 'Ali', team: 'CS', assist: null, penalty: true },
   { id: 34, name: 'Hammad', team: 'CS', assist: 'Hamza' },
-  { id: 35, name: 'Ammar', team: 'CS', assist: null },
+  { id: 35, name: 'Abdullah Ammar', team: 'CS', assist: null },
   { id: 36, name: 'Saim', team: 'AS', assist: null, penalty: true },
   { id: 37, name: 'Aatif', team: 'AS', assist: 'Lucky' },
   { id: 38, name: 'Misbah', team: 'AS', assist: 'Aatif' },
