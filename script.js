@@ -103,7 +103,7 @@ const topCleanSheets = [
     { name : 'Jasim', team : 'EC', count : 3 },
     { name : 'Nauman', team : 'EE', count : 2 },
     { name : 'Suhaib', team : 'CS', count : 1 },
-    { name : 'Vasudev', team : 'CS', count : 1 }
+    { name : 'Vasudev', team : 'CS', count : 2 }
 ]
 
 // Function to display league table
