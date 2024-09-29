@@ -23,9 +23,9 @@ const fixtures = [
     { day: 4, home: 'CS', away: 'CE', result: '4-0', time: '10:00', goals: [21, 22, 23, 24] },  
     { day: 4, home: 'EE', away: 'ME', result: '0-0', time: '11:30', goals: [] },  
     { day: 4, home: 'AS', away: 'EC', result: '0-5', time: '13:00', goals: [25, 26, 27, 28, 29] },  
-    { day: 5, home: 'EC', away: 'ME', result: '1-1', time: '10:00', goals: [/*30, 31*/] },  
-    { day: 5, home: 'CS', away: 'EE', result: '3-1', time: '11:30', goals: [/*32,33,34,35*/]},  
-    { day: 5, home: 'AS', away: 'CE', result: '7-2', time: '13:00', goals: [/*36,37,38,39,40,41,42,43,44*/] },  
+    { day: 5, home: 'EC', away: 'ME', result: '1-1', time: '10:00', goals: [30, 31] },  
+    { day: 5, home: 'CS', away: 'EE', result: '3-1', time: '11:30', goals: [32,33,34,35]},  
+    { day: 5, home: 'AS', away: 'CE', result: '7-2', time: '13:00', goals: [36,37,38,39,40,41,42,43,44] },  
     { day: 6, home: 'CS', away: 'EC', result: null, time: '15:00' },  
 ]
 
@@ -75,7 +75,16 @@ const goals = [
   { id: 32, name: 'Rehan', team: 'EE', assist: 'Iftikhar' },
   { id: 33, name: 'Ali', team: 'CS', assist: null, penalty: true },
   { id: 34, name: 'Hammad', team: 'CS', assist: 'Hamza' },
-  { id: 35, name: 'Ammar', team: 'CS', assist: null }
+  { id: 35, name: 'Ammar', team: 'CS', assist: null },
+  { id: 36, name: 'Saim', team: 'AS', assist: null, penalty: true },
+  { id: 37, name: 'Aatif', team: 'AS', assist: 'Lucky' },
+  { id: 38, name: 'Misbah', team: 'AS', assist: 'Aatif' },
+  { id: 39, name: 'Fahad', team: 'AS', assist: 'Mehbubul' },
+  { id: 40, name: 'Aquib', team: 'CE', assist: 'Abul' },
+  { id: 41, name: 'Lucky', team: 'AS', assist: null },
+  { id: 42, name: 'Saim', team: 'AS', assist: 'Mehbubul' },
+  { id: 43, name: 'Aquib', team: 'CE', assist: 'Abul' },
+  { id: 44, name: 'Saim', team: 'AS', assist: null }
 ]
 
 function getGoalByID(id){
