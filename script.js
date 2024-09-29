@@ -70,6 +70,12 @@ const goals = [
     { id: 27, name : 'Ashaiz', team : 'EC', assist : 'Zia' },
     { id: 28, name : 'Ashaiz', team : 'EC', assist : null, penalty: true },
     { id: 29, name : 'Zia', team : 'EC', assist : 'Imdadul' },
+  { id: 30, name: 'Momodou', team: 'ME', assist: 'Osama' },
+  { id: 31, name: 'Riaz', team: 'EC', assist: 'Ashaiz' },
+  { id: 32, name: 'Rehan', team: 'EE', assist: 'Iftikhar' },
+  { id: 33, name: 'Ali', team: 'CS', assist: null, penalty: true },
+  { id: 34, name: 'Hammad', team: 'CS', assist: 'Hamza' },
+  { id: 35, name: 'Ammar', team: 'CS', assist: null }
 ]
 
 function getGoalByID(id){
