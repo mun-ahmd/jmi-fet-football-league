@@ -26,7 +26,7 @@ const fixtures = [
     { day: 5, home: 'EC', away: 'ME', result: '1-1', time: '10:00', goals: [30, 31] },  
     { day: 5, home: 'CS', away: 'EE', result: '3-1', time: '11:30', goals: [32,33,34,35]},  
     { day: 5, home: 'AS', away: 'CE', result: '7-2', time: '13:00', goals: [36,37,38,39,40,41,42,43,44] },  
-    { day: 6, home: 'CS', away: 'EC', result: null, time: '15:00' },  
+    { day: 6, home: 'CS', away: 'EC', result: null, time: '15:30' },  
 ]
 
 const fixture_descriptions = {
@@ -35,7 +35,7 @@ const fixture_descriptions = {
     3 : 'Day 3 - 27th September - Friday',
     4 : 'Day 4 - 28th September - Saturday',
     5 : 'Day 5 - 29th September - Sunday',
-    6 : 'Final - 4th October - Friday'
+    6 : 'Final - 6th October - Sunday'
 }
 
 const goals = [
