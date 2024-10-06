@@ -96,7 +96,7 @@ const goals = [
   { id: 43, name: 'Aquib', team: 'CE', assist: 'Abul' },
   { id: 44, name: 'Saim', team: 'AS', assist: null },
   { id: 45, name: 'Hamza', team: 'CS', assist: null },
-  { id: 46, name: 'Riaz', team: 'EC', assist: null },
+  { id: 46, name: 'Riaz', team: 'EC', assist: 'Danish' },
 ]
 
 function getGoalByID(id){
