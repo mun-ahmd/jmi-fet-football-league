@@ -26,8 +26,18 @@ const fixtures = [
     { day: 5, home: 'EC', away: 'ME', result: '1-1', time: '10:00', goals: [30, 31] },  
     { day: 5, home: 'CS', away: 'EE', result: '3-1', time: '11:30', goals: [32,33,34,35]},  
     { day: 5, home: 'AS', away: 'CE', result: '7-2', time: '13:00', goals: [36,37,38,39,40,41,42,43,44] },  
-    { day: 6, home: 'CS', away: 'EC', result: null, time: '15:30' },  
 ]
+
+const final_fixture = { 
+    day: 6,
+    home: 'CS',
+    away: 'EC',
+    winner: null,
+    result: null,
+    penalties: null,
+    time: '15:30',
+    goals: []
+}
 
 const fixture_descriptions = {
     1 : 'Day 1 - 21st September - Saturday',
@@ -274,7 +284,7 @@ function displayFixturesGroupedByDay() {
     const fixturesGrouped = document.getElementById('fixtures-grouped');
     let currentDay = 0;
     
-    fixtures.forEach(fixture => {
+    [...fixtures, final_fixture].forEach(fixture => {
         
         let date = new Date(`1970-01-01T${fixture.time}:00`);
         
@@ -287,9 +297,10 @@ function displayFixturesGroupedByDay() {
             }
         }
 
+        let dayHeader = null;
         if (fixture.day !== currentDay) {
             // Create a new day header
-            const dayHeader = document.createElement('h3');
+            dayHeader = document.createElement('h3');
             dayHeader.textContent = `${fixture_descriptions[fixture.day]}`;
             fixturesGrouped.appendChild(dayHeader);
             currentDay = fixture.day;
@@ -298,13 +309,31 @@ function displayFixturesGroupedByDay() {
         // Create the fixture list item
         const listItem = document.createElement('li');
 
-            listItem.innerHTML = `${fixture.home} vs ${fixture.away} - <span>${fixture.time}</span><span style="float: right;">${fixture.result ?? 'TBD'}</span>`;
 
         if (fixture.day == FINAL_DAY){
             listItem.classList.add('final');
+            let finalResult = '';
+            if(fixture.penalties){
+                finalResult = `${fixture.result[0]}(${fixture.penalties[0]}) - ${fixture.result[1]}(${fixture.penalties[1]})`;
+            }
+            else if(fixture.result) {
+                finalResult = `${fixture.result[0]} - ${fixture.result[1]}`
+            }
+            else{
+                finalResult = 'TBD'
+            }
+            listItem.innerHTML = `${fixture.home} vs ${fixture.away} - <span>${fixture.time}</span><span style="float: right;">${finalResult}</span>`;
+            if(fixture.result) {
+                listItem.innerHTML = `<h3>Winner: ${participants[fixture.winner]}</h3>`.concat(listItem.innerHTML);
+            }
         }
-        else if (fixture.result) {
-            listItem.classList.add('past');
+        else{
+            listItem.innerHTML = `${fixture.home} vs ${fixture.away} - <span>${fixture.time}</span><span style="float: right;">${fixture.result ?? 'TBD'}</span>`;
+        }
+        if (fixture.result) {
+            if (fixture.day != FINAL_DAY){
+                listItem.classList.add('past');
+            }
             // Add goalscorers if available
             if (fixture.goals.length > 0) {
                 const scorersList = document.createElement('ul');
@@ -336,6 +365,20 @@ function displayFixturesGroupedByDay() {
             listItem.classList.add('upcoming');
         }
         fixturesGrouped.appendChild(listItem);
+
+        if (fixture.day == FINAL_DAY && fixture.result != null) {
+            const finalFixtureElement = document.getElementById('final-fixture');
+            
+
+
+            const ulFinal = document.createElement('ul');
+            if(dayHeader){
+                ulFinal.appendChild(dayHeader);
+            }
+            ulFinal.appendChild(listItem);
+            finalFixtureElement.appendChild(ulFinal);
+        }
+
     });
 }
 

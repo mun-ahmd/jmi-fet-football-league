@@ -12,6 +12,10 @@
         <h1>Faculty of Engineering & Technology Football League</h1>
     </header>
     
+    <section id="final-fixture">
+        <!-- Inserted by JavaScript -->
+    </section>
+
     <section id="league-table">
         <h2>League Table</h2>
         <table>
@@ -62,6 +66,113 @@
             <!-- clean sheets will be inserted here by JavaScript -->
         </ul>
     </section>
+
+
+    <!-- Fireworks Canvas Overlay -->
+    <canvas id="fireworksCanvas"></canvas>
+
+    <script>
+        // Fireworks logic from earlier
+        const canvas = document.getElementById('fireworksCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+		
+        class Firework {
+            constructor(x, y, color) {
+                this.x = x;
+                this.y = y;
+                this.color = color;
+                this.radius = Math.random() * 2 + 1;
+                this.velocityX = Math.random() * 6 - 3;
+                this.velocityY = Math.random() * 6 - 3;
+                this.alpha = 1;
+                this.decay = Math.random() * 0.02 + 0.01;
+            }
+
+            update() {
+                this.x += this.velocityX;
+                this.y += this.velocityY;
+                this.alpha -= this.decay;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        class FireworkShow {
+            constructor() {
+                this.fireworks = [];
+            }
+
+            addFirework(x, y, color) {
+                const particleCount = Math.random() * 40 + 20;
+                for (let i = 0; i < particleCount; i++) {
+                    this.fireworks.push(new Firework(x, y, color));
+                }
+            }
+
+            update() {
+                this.fireworks = this.fireworks.filter(firework => firework.alpha > 0);
+                this.fireworks.forEach(firework => firework.update());
+            }
+
+            draw() {
+                this.fireworks.forEach(firework => firework.draw());
+            }
+        }
+
+        const fireworkShow = new FireworkShow();
+
+        function randomColor() {
+            const colors = ['#ff595e', '#ffca3a', '#8ac926', '#1982c4', '#6a4c93'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        function launchFirework() {
+            const x = Math.random() * canvas.width;
+            const y = Math.random() * canvas.height * 0.5; // Explode in upper half
+            const color = randomColor();
+            fireworkShow.addFirework(x, y, color);
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            fireworkShow.update();
+            fireworkShow.draw();
+            requestAnimationFrame(animate);
+        }
+
+        // Only show fireworks if the final result is present
+        function triggerFireworksIfFinalIsDone() {
+            const finalResult = document.getElementById('final-fixture');
+            if (finalResult && finalResult.children.length > 0) {
+				const fireworkInterval = setInterval(launchFirework, 500); // Launch a firework every 0.5 seconds
+                animate(); // Start the fireworks animation loop
+				
+				setTimeout(() => {
+                clearInterval(fireworkInterval); // Stop launching new fireworks
+            }, 20000); // 20 seconds in milliseconds
+            }
+        }
+
+        window.addEventListener('load', () => {
+            triggerFireworksIfFinalIsDone();
+        });
+
+        // Resize the canvas when window is resized
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
 
     <script src="script.js"></script>
     <script>
