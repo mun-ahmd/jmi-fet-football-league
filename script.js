@@ -32,9 +32,9 @@ const final_fixture = {
     day: 6,
     home: 'CS',
     away: 'EC',
-    winner: null,
-    result: null,
-    penalties: null,
+    winner: 'EC',
+    result: [1,1],
+    penalties: [1,2],
     time: '15:30',
     goals: []
 }
